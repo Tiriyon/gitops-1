@@ -14,7 +14,7 @@ spec:
       - path: "{{ .Values.global.path }}/configs/*.yaml"
   template:
     metadata:
-      name: '{{`{{ path[1] }}-{{ path[2] }}-{{ argocd.appName }}`}}'
+      name: '{{`{{ path[1] }}-{{ argocd.appName }}`}}'
     spec:
       destination:
         name: 'in-cluster'
