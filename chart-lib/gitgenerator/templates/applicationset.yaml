@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: {{ include "deploy-center.fullname" . }}
+  annotations:
+    templateName: {{ .Template.Name }}
+    templateBasePath: {{ .Template.BasePath }}
+spec:
+  generators:
+  - git:
+      repoURL: 'git@github.com:Tiriyon/gitops-1.git'
+      revision: main
+      files:
+      - path: "{{ .Values.global.path }}/configs/*.yaml"
+  template:
+    metadata:
+      name: '{{`{{ path[1] }}-{{ path[2] }}-{{ argocd.appName }}`}}'
+    spec:
+      destination:
+        name: '{{`{{ path[1] }}`}}'
+        namespace: '{{`{{ path[2] }}`}}'
+      project: default
+      source:
+        helm:
+          values: '{{`{{ source.helm.values }}`}}'
+          valueFiles:
+          - ci-values.yaml
+        path: '{{`{{ source.path }}`}}'
+        repoURL: 'git@github.com:Tiriyon/gitops-1.git'
+        targetRevision: 'main'
+      syncPolicy:
+        automated: {
+          prune: true
+        }
+        syncOptions:
+          - CreateNamespace=true
