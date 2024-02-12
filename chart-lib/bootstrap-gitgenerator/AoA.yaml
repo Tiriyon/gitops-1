@@ -14,7 +14,7 @@ spec:
       revision: main
   template:
     metadata:
-      name: asset-{{ path[1] }}-{{ path[2] }}-{{ path.basename }}
+      name: asset-{{ path[1] }}-{{ path.basename }}
     spec:
       destination:
         name: in-cluster
