@@ -1,0 +1,6 @@
+argocd:
+  appName: app-b
+source:
+  path: charts/app-b
+  helm:
+    values: |

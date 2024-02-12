@@ -1,0 +1,6 @@
+argocd:
+  appName: nginx
+source:
+  path: charts/nginx-1
+  helm:
+    values: |
