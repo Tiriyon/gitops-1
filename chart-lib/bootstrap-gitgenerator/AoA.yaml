@@ -10,7 +10,7 @@ spec:
               #applicationsets/cluster/namespace/app
               #applicationsets/namespace/cluster/app
       - path: applicationsets/*/*
-      repoURL: 'git@github.com:Tiriyon/demo-deploy-center.git'
+      repoURL: 'git@github.com:Tiriyon/gitops-1.git'
       revision: main
   template:
     metadata:
