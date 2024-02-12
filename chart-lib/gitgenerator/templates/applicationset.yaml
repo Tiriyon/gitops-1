@@ -17,8 +17,8 @@ spec:
       name: '{{`{{ path[1] }}-{{ path[2] }}-{{ argocd.appName }}`}}'
     spec:
       destination:
-        name: '{{`{{ path[1] }}`}}'
-        namespace: '{{`{{ path[2] }}`}}'
+        name: 'in-cluster'
+        namespace: '{{`{{ path[1] }}`}}'
       project: default
       source:
         helm:
